@@ -32,6 +32,12 @@ module.exports = {
     return response.json(selectProduct);
   },
 
+  async findAll(request, response) {
+    const returnProducts = await Product.find();
+
+    return response.json(returnProducts);
+  },
+
   async deleteById(request, response) {
 
     const productDelete = await Product.deleteById(request.params.id)

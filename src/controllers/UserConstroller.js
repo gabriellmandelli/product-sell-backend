@@ -9,8 +9,6 @@ module.exports = {
 
     existUser = await User.findOne({ user: user });
 
-    console.log('Teste: ' + existUser);
-
     if (existUser) {
       response.json({ menssage: 'Usuario informado já esta sendo utilizado.' });
     }
@@ -26,17 +24,17 @@ module.exports = {
     return response.json(newProduct);
   },
 
-  async getAll(request, response) {
+  async findAll(request, response) {
 
-    const returnUsers = User.getAll();
+    const returnUsers = await User.find();
 
     return response.json(returnUsers);
   },
 
-  async getByUserPassword(request, response) {
+  async findByUserPassword(request, response) {
     const { user, password } = request.headers;
 
-    returnUser = User.findOne({ user: user, password: password });
+    returnUser = await User.findOne({ user: user, password: password });
 
     return response.json(returnUser);
   }
