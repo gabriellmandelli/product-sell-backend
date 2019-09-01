@@ -17,7 +17,7 @@ userRoutes.use(
   userRoutes.post('/user', UserController.add),
 
   userRoutes.get('/user', UserController.findAll),
-
+  
   userRoutes.get('/user/login', UserController.findByUserPassword),
 );
 

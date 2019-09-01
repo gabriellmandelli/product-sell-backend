@@ -19,9 +19,8 @@ mongodb+srv://mandelli:mandelli@cluster0-rl2ot.mongodb.net/productsell?retryWrit
 #axios to do request in external api
 yarn add axios
 
-#cors allow the api to can acessed anywhere andress
+#cors allow the api to be can acessed anywhere andress
 yarn add cors
-
 
 product : {
   id_reference: number;

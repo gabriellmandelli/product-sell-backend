@@ -10,7 +10,7 @@ module.exports = {
 
     if (existProduct) {
       return response.json({ error: 'Product exist' });
-    }
+    };
 
     const newProduct = await Product.create({
       idReference: idReference,
@@ -40,7 +40,7 @@ module.exports = {
 
   async deleteById(request, response) {
 
-    const productDelete = await Product.deleteById(request.params.id)
+    const productDelete = await Product.deleteById(request.params.id);
 
     return response.json(productDelete);
   }

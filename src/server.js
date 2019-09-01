@@ -5,14 +5,22 @@ const routes = require("./routes")
 
 const server = express();
 
-mongoose.connect("mongodb+srv://mandelli:mandelli@cluster0-rl2ot.mongodb.net/productsell?retryWrites=true&w=majority", {
-  useNewUrlParser: true
-});
+const SERVER_PORT = 3333;
+
+const mongooConfig = {
+  USER: "mandelli",
+  PASSWORD: "mandelli",
+  DATABASENAME: "productsell",
+};
+
+const mongooseConnection = `mongodb+srv://${mongooConfig.USER}:${mongooConfig.PASSWORD}@cluster0-rl2ot.mongodb.net/${mongooConfig.DATABASENAME}?retryWrites=true&w=majority`;
+
+mongoose.connect(mongooseConnection, { useNewUrlParser: true });
 
 server.use(cors());
-
 server.use(express.json());
+server.use(routes);
 
-server.use(routes)
-
-server.listen(3333);
+server.listen(SERVER_PORT, () => {
+  console.log(`Server started on Port ${SERVER_PORT}`);
+});

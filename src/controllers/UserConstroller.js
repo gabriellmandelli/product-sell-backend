@@ -2,7 +2,6 @@ const User = require('../models/User');
 
 module.exports = {
 
-
   async add(request, response) {
 
     const { name, user, password, email, phone } = request.body;
