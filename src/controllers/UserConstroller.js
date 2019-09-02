@@ -37,4 +37,4 @@ module.exports = {
 
     return response.json(returnUser);
   }
-}
+};
