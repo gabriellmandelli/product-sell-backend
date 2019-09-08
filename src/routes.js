@@ -1,17 +1,21 @@
 const express = require("express");
+
 const ProductController = require("./controllers/ProductController");
 const UserController = require("./controllers/UserConstroller");
 
-const routes = express.Router()
+const router = express.Router()
 
-//- Product
-routes.post('/product', ProductController.add)
-routes.get('/product', ProductController.findAll)
-routes.get('/product/:id', ProductController.findById)
+router.post('/product', ProductController.add)
+router.post('/product/:id/like', ProductController.likeById)
 
-//-- User
-routes.post('/user', UserController.add)
-routes.get('/user', UserController.findAll)
-routes.get('/user/login', UserController.findByUserPassword)
+router.get('/product', ProductController.findAll)
+router.get('/product/:id', ProductController.findById)
 
-module.exports = routes;
+router.delete('/product/:id', ProductController.deleteById)
+router.delete('/product', ProductController.deleteAll)
+
+router.post('/user', UserController.add)
+router.get('/user', UserController.findAll)
+router.get('/user/login', UserController.findByUserPassword)
+
+module.exports = router;

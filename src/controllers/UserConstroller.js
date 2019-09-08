@@ -6,7 +6,11 @@ module.exports = {
 
     const { name, user, password, email, phone } = request.body;
 
-    existUser = await User.findOne({ user: user });
+    existUser = await User.findOne({ user: user }, (error, result) => {
+      if (error) {
+        response.json(error)
+      }
+    });
 
     if (existUser) {
       response.json({ menssage: 'Usuario informado já esta sendo utilizado.' });
@@ -18,23 +22,31 @@ module.exports = {
       password,
       email,
       phone
+    }, (error, result) => {
+      if (error) {
+        response.json(error)
+      }
+      response.json(result)
     });
-
-    return response.json(newProduct);
   },
 
   async findAll(request, response) {
-
-    const returnUsers = await User.find();
-
-    return response.json(returnUsers);
+    await User.find((error, result) => {
+      if (error) {
+        response.json(error)
+      }
+      response.json(result)
+    });
   },
 
   async findByUserPassword(request, response) {
     const { user, password } = request.headers;
 
-    returnUser = await User.findOne({ user: user, password: password });
-
-    return response.json(returnUser);
+    returnUser = await User.findOne({ user: user, password: password }, (error, result) => {
+      if (error) {
+        response.json(error)
+      }
+      response.json(result)
+    });
   }
 };

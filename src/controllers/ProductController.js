@@ -6,42 +6,82 @@ module.exports = {
 
     const { idReference, name, description, value, url } = request.body;
 
-    const existProduct = await Product.findOne({ idReference: idReference });
+    const existProduct = await Product.findOne({ idReference: idReference }, (error) => {
+      if (error) {
+        response.json(error)
+      }
+    });
 
     if (existProduct) {
-      return response.json({ error: 'Product exist' });
+      return response.json({ error: `Product exist: ${idReference}` });
     };
 
-    const newProduct = await Product.create({
+    await Product.create({
       idReference: idReference,
       name: name,
       description: description,
       value: value,
       url: url,
       likes: 0
+    }, (error, result) => {
+      if (error) {
+        response.json(error)
+      }
+      response.json(result);
     });
-
-    return response.json(newProduct);
   },
 
   async findById(request, response) {
-    const { idProduct } = request.headers;
+    await Product.findById(request.params.id, (error, result) => {
+      if (error) {
+        response.json(error)
+      }
+      response.json(result)
+    });
+  },
 
-    const selectProduct = await Product.findById(idProduct);
+  async likeById(request, response) {
 
-    return response.json(selectProduct);
+    const selectProduct = await Product.findById(request.params.id, (error) => {
+      if (error) {
+        response.json(error)
+      }
+    });
+
+    selectProduct.likes++
+
+    await selectProduct.save((error, result) => {
+      if (error) {
+        response.json(error)
+      }
+      response.json(result)
+    })
   },
 
   async findAll(request, response) {
-    const returnProducts = await Product.find();
-
-    return response.json(returnProducts);
+    await Product.find((error, result) => {
+      if (error) {
+        response.json(error)
+      }
+      response.json(result)
+    });
   },
 
   async deleteById(request, response) {
+    await Product.deleteById(request.params.id, (error, result) => {
+      if (error) {
+        response.json(error)
+      }
+      response.json(result);
+    });
+  },
 
-    const productDelete = await Product.deleteById(request.params.id);
-
-    return response.json(productDelete);
+  async deleteAll(request, response) {
+    await Product.deleteMany((error, result) => {
+      if (error) {
+        response.json(error)
+      }
+      response.json(result)
+    });
   }
 };
