@@ -3,19 +3,20 @@ const express = require("express");
 const ProductController = require("./controllers/ProductController");
 const UserController = require("./controllers/UserConstroller");
 
-const router = express.Router()
+const productRoutes = express.Router()
+const userRoutes = express.Router()
 
-router.post('/product', ProductController.add)
-router.post('/product/:id/like', ProductController.likeById)
+productRoutes.post('/product', ProductController.add)
+productRoutes.post('/product/:id/like', ProductController.likeById)
 
-router.get('/product', ProductController.findAll)
-router.get('/product/:id', ProductController.findById)
+productRoutes.get('/product', ProductController.findAll)
+productRoutes.get('/product/:id', ProductController.findById)
 
-router.delete('/product/:id', ProductController.deleteById)
-router.delete('/product', ProductController.deleteAll)
+productRoutes.delete('/product/:id', ProductController.deleteById)
+productRoutes.delete('/product', ProductController.deleteAll)
 
-router.post('/user', UserController.add)
-router.get('/user', UserController.findAll)
-router.get('/user/login', UserController.findByUserPassword)
+userRoutes.post('/user', UserController.add)
+userRoutes.get('/user', UserController.findAll)
+userRoutes.get('/user/login', UserController.findByUserPassword)
 
-module.exports = router;
+module.exports = [productRoutes, userRoutes];
