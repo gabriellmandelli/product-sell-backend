@@ -5,7 +5,7 @@ const routes = require("./routes")
 
 const server = express();
 
-const SERVER_PORT = 3333;
+const SERVER_PORT = process.env.PORT || 3333;
 
 const mongooConfig = {
   USER: "mandelli",
