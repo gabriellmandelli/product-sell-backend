@@ -68,7 +68,7 @@ module.exports = {
   },
 
   async deleteById(request, response) {
-    await Product.deleteById(request.params.id, (error, result) => {
+    await Product.deleteOne({ _id: request.params.id }, (error, result) => {
       if (error) {
         response.json(error)
       }

@@ -6,7 +6,7 @@ module.exports = {
 
     const { name, user, password, email, phone } = request.body;
 
-    existUser = await User.findOne({ user: user }, (error, result) => {
+    const existUser = await User.findOne({ user: user }, (error, result) => {
       if (error) {
         response.json(error)
       }
@@ -16,7 +16,7 @@ module.exports = {
       response.json({ menssage: 'Usuario informado já esta sendo utilizado.' });
     }
 
-    const newProduct = await User.create({
+    await User.create({
       name,
       user,
       password,
