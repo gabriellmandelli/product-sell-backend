@@ -21,11 +21,3 @@ yarn add axios
 
 #cors allow the api to be can acessed anywhere andress
 yarn add cors
-
-product : {
-  id_reference: number;
-  name: string;
-  description: string;
-  value: number;
-  likes: number;
-}

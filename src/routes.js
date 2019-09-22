@@ -6,17 +6,19 @@ const UserController = require("./controllers/UserConstroller");
 const productRoutes = express.Router()
 const userRoutes = express.Router()
 
-productRoutes.post('/product', ProductController.add)
-productRoutes.post('/product/:id/like', ProductController.likeById)
+productRoutes
+  .post('/product', ProductController.add)
+  .put('/product', ProductController.updateProduct)
+  .post('/product/:id/like', ProductController.likeById)
+  .get('/product', ProductController.findAll)
+  .get('/product/:id', ProductController.findById)
+  .delete('/product/:id', ProductController.deleteById)
+  .delete('/product', ProductController.deleteAll)
 
-productRoutes.get('/product', ProductController.findAll)
-productRoutes.get('/product/:id', ProductController.findById)
-
-productRoutes.delete('/product/:id', ProductController.deleteById)
-productRoutes.delete('/product', ProductController.deleteAll)
-
-userRoutes.post('/user', UserController.add)
-userRoutes.get('/user', UserController.findAll)
-userRoutes.get('/user/login', UserController.findByUserPassword)
+userRoutes
+  .post('/user', UserController.add)
+  .put('/user', UserController.updateUser)
+  .get('/user', UserController.findAll)
+  .get('/user/login', UserController.findByUserPassword)
 
 module.exports = [productRoutes, userRoutes];
