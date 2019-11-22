@@ -1,7 +1,7 @@
-const express = require("express");
+const express = require("express")
 
-const ProductController = require("./controllers/ProductController");
-const UserController = require("./controllers/UserConstroller");
+const ProductController = require("./controllers/ProductController")
+const UserController = require("./controllers/UserConstroller")
 
 const productRoutes = express.Router()
 const userRoutes = express.Router()
@@ -21,4 +21,4 @@ userRoutes
   .get('/user', UserController.findAll)
   .get('/user/login', UserController.findByUserPassword)
 
-module.exports = [productRoutes, userRoutes];
+module.exports = [productRoutes, userRoutes]

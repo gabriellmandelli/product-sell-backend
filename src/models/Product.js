@@ -1,4 +1,4 @@
-const { Schema, model } = require("mongoose");
+const { Schema, model } = require("mongoose")
 
 const ProductSchema = new Schema({
 
@@ -34,6 +34,6 @@ const ProductSchema = new Schema({
 
 }, {
     timestamps: true,
-  });
+  })
 
-module.exports = model('Product', ProductSchema);
+module.exports = model('Product', ProductSchema)
