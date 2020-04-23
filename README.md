@@ -1,23 +1,16 @@
-#Command line start dev:
+product-sell-backend
+====================
 
-#init Project
-yarn init -y
+About this project
+------------------
 
-#add express (route controller)
-yarn add express
-
-#add 
-yarn add nodemon -D
-
-#add add "scripts":"dev" nodemon src/service.js to start api using the command yarn dev
-
-#mongoDB 
-yarn add mongoose
-
-mongodb+srv://mandelli:mandelli@cluster0-rl2ot.mongodb.net/productsell?retryWrites=true&w=majority
-
-#axios to do request in external api
-yarn add axios
-
-#cors allow the api to be can acessed anywhere andress
-yarn add cors
+Command lines to start a project like this
+------------------------------------------
+```
+yarn init -y //Init a project
+yarn add express //Route controller
+yarn add nodemon -D //Dev dependence to run
+yarn add mongoose //Add Mongoose
+yarn add axios //Axios to do request in external api
+yarn add cors //Cors allow the api to be can acessed anywhere andress
+```
