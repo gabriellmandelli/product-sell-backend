@@ -24,7 +24,7 @@ These are some dependencies used in this repository:
    > To get started...
 #### Steps:
 - 🍴 Fork this repo!
-- 👯 Clone this repo to your local machine using `https://github.com/gabriellmandelli/seed-springboot-kotlin.git`
+- 👯 Clone this repo to your local machine using `https://github.com/gabriellmandelli/product-sell-frontend.git`
 - 🎋 Create your feature branch using `git checkout -b my-feature`
 - ✅ Commit your changes using `git commit -m 'feat: My new feature'`
 - 📌 Push to the branch using `git push origin my-feature`
